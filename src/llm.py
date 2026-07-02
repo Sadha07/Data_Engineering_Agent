@@ -2,7 +2,7 @@
 
 Default provider is Databricks Model Serving (Foundation Model APIs), which is
 OpenAI-compatible and needs no external key inside a Databricks App. You can
-switch to openai/anthropic via env for local development.
+switch to groq/openai/anthropic via env for local development.
 """
 from __future__ import annotations
 
@@ -28,6 +28,11 @@ def get_llm(temperature: float = 0.0):
         from langchain_openai import ChatOpenAI
 
         return ChatOpenAI(model=config.llm_model, temperature=temperature)
+
+    if provider == "groq":
+        from langchain_groq import ChatGroq
+
+        return ChatGroq(model=config.llm_model, temperature=temperature)
 
     if provider == "anthropic":
         from langchain_anthropic import ChatAnthropic
