@@ -1,0 +1,41 @@
+# Databricks Apps configuration.
+command:
+  - "streamlit"
+  - "run"
+  - "app.py"
+  - "--server.port"
+  - "8000"
+  - "--server.address"
+  - "0.0.0.0"
+
+env:
+  - name: DATABRICKS_WAREHOUSE_ID
+    value: "REPLACE_WITH_WAREHOUSE_ID"
+  - name: UC_CATALOG
+    value: "main"
+  - name: UC_SCHEMA
+    value: "de_agent"
+  - name: UC_VOLUME
+    value: "raw"
+  - name: UC_ARTIFACTS_VOLUME
+    value: "agent_artifacts"
+  - name: LLM_PROVIDER
+    value: "databricks"
+  - name: LLM_MODEL
+    value: "databricks-meta-llama-3-3-70b-instruct"
+  - name: PIPELINE_LAYERS
+    value: "bronze,silver,gold"
+  - name: WRITE_MODE
+    value: "full_refresh"
+  - name: INGEST_MODE
+    value: "batch"
+  - name: ENGINE
+    value: "sql"
+  - name: MAX_ITERATIONS
+    value: "4"
+  - name: REQUIRE_APPROVAL
+    value: "false"
+  - name: RUN_EXPLAIN
+    value: "true"
+  - name: ENABLE_PROFILING
+    value: "true"
